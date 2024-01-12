@@ -10,6 +10,7 @@ export const contactsSlice = createSlice({
   initialState,
   reducers: {
     addContact: (state, action) => {
+      // Directly using immer's ability to "mutate" the state
       state.contacts.push(action.payload);
     },
     removeContact: (state, action) => {
@@ -24,13 +25,14 @@ export const contactsSlice = createSlice({
       state.filter = action.payload;
     },
   },
+  // Optional: Adding extraReducers if you have any asynchronous actions or want to handle actions from other slices
+  extraReducers: builder => {
+    builder.addCase('some/otherAction', (state, action) => {
+      // Handle some other action
+    });
+    // You can add more cases as needed
+  },
 });
-
-export const createContact = newContact => {
-  return dispatch => {
-    dispatch(addContact(newContact));
-  };
-};
 
 export const { addContact, removeContact, setFilter } = contactsSlice.actions;
 
