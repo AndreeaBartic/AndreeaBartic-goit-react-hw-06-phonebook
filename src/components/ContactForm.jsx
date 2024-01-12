@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { createContact } from 'features/slice';
+import { addContact, createContact } from 'features/slice';
 
 const INITIAL_STATE = { name: '', number: '' };
 
@@ -24,7 +24,7 @@ const ContactForm = () => {
       name: form.name,
       number: form.number,
     };
-    dispatch(createContact(newContact));
+    dispatch(addContact(newContact));
     setForm({ ...INITIAL_STATE });
   };
 
