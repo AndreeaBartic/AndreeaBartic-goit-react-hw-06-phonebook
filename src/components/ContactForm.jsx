@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addContact, createContact } from 'features/slice';
+import { addContact } from 'features/slice';
 
 const INITIAL_STATE = { name: '', number: '' };
 
