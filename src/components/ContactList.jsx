@@ -13,12 +13,14 @@ const ContactList = () => {
     dispatch(removeContact(contactId));
   };
 
-  const filteredContacts = contacts.reduce((acc, contact) => {
-    if (contact.name.toLowerCase().includes(filter.toLowerCase())) {
-      acc.push(contact);
-    }
-    return acc;
-  }, []);
+  const filteredContacts = Array.isArray(contacts)
+    ? contacts.reduce((acc, contact) => {
+        if (contact.name.toLowerCase().includes(filter.toLowerCase())) {
+          acc.push(contact);
+        }
+        return acc;
+      }, [])
+    : [];
 
   return (
     <>
