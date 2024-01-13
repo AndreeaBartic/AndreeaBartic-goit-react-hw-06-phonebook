@@ -10,6 +10,7 @@ export const store = configureStore({
   },
   preloadedState: persistedState,
 });
+
 store.subscribe(() => {
   saveState({
     contacts: store.getState().contacts,

@@ -1,7 +1,7 @@
-import { nanoid } from 'nanoid';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addContact } from 'features/slice';
+import { nanoid } from 'nanoid';
 
 const INITIAL_STATE = { name: '', number: '' };
 
@@ -19,12 +19,7 @@ const ContactForm = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const newContact = {
-      id: nanoid(),
-      name: form.name,
-      number: form.number,
-    };
-    dispatch(addContact(newContact));
+    dispatch(addContact({ id: nanoid(), ...form }));
     setForm({ ...INITIAL_STATE });
   };
 
